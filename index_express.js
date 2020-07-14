@@ -18,12 +18,25 @@ app.use(express.static('public'))
 app.get('/', (req, res) => {
     // res.status(200)
     // res.sendFile(path.join(__dirname, 'views2', 'index.html'))
-    res.render('index')
+    res.render('index',{
+        title:'Главная страница',
+        isHome: true
+    })
 })
-app.get('/about', (req, res) => {
+app.get('/add', (req, res) => {
     // res.status(200)
     // res.sendFile(path.join(__dirname, 'views2', 'about.html'))
-    res.render('about')
+    res.render('add',{
+        title:'Добавить курс',
+        isAdd: true
+    })
+})
+
+app.get('/courses', (req, res) => {
+    res.render('courses',{
+        title:'Курсы',
+        isCourses: true
+    })
 })
 
 const PORT = process.env.PORT || 3000
