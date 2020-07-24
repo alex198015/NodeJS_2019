@@ -5,6 +5,7 @@ const homeRoutes = require('./routes/home')
 const addRoutes = require('./routes/add')
 const coursesRoutes = require('./routes/courses')
 const cardRoutes = require('./routes/card')
+const ordersRoutes = require('./routes/orders')
 const mongoose = require('mongoose')
 const User = require('./models/user')
 
@@ -26,7 +27,7 @@ app.set('views', 'views2')
 app.use(async (req, res, next) => {
     try {
         const user = await User.findById('5f19e1e715507e2fb49f9816')
-        
+           
         req.user = user
         
         next()
@@ -42,6 +43,7 @@ app.use('/', homeRoutes)
 app.use('/add', addRoutes)
 app.use('/courses', coursesRoutes)
 app.use('/card', cardRoutes)
+app.use('/orders', ordersRoutes)
 
 const PORT = process.env.PORT || 3000
 
