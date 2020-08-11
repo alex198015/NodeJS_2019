@@ -14,6 +14,8 @@ const ordersRoutes = require('./routes/orders')
 const authRoutes = require('./routes/auth')
 const profileRoutes = require('./routes/profile')
 const mongoose = require('mongoose')
+const helmet = require('helmet')
+const compression = require('compression')
 const varMiddleware = require('./middleware/variables')
 const userMiddleware = require('./middleware/user')
 const errorHandler = require('./middleware/error')
@@ -68,6 +70,10 @@ app.use(session({
 app.use(fileMiddleware.single('avatar'))
 app.use(csrf())
 app.use(flash())
+app.use(helmet.referrerPolicy({
+    policy: "no-referrer",
+  }))
+app.use(compression())
 app.use(varMiddleware)
 app.use(userMiddleware)
 
