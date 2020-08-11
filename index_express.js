@@ -1,5 +1,6 @@
 const express = require('express')
 const path = require('path')
+const cors = require('cors')
 const csrf = require('csurf')
 const flash = require('connect-flash')
 const exphbs = require('express-handlebars')
@@ -20,7 +21,6 @@ const fileMiddleware = require('./middleware/file')
 const keys = require('./keys')
 
 
-
 const app = express()
 
 const hbs = exphbs.create({
@@ -37,7 +37,7 @@ const store = new MongoStore({
     collection: 'sessions',
     uri: keys.MONGODB_URI
 })
-
+app.use(cors())
 app.engine('hbs', hbs.engine)
 app.set('view engine', 'hbs')
 app.set('views', 'views2')

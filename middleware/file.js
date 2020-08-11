@@ -1,11 +1,12 @@
 const multer = require('multer')
+const { v4: uuidv4 } = require('uuid')
 
 const storage = multer.diskStorage({
   destination(req, file, cb) {
     cb(null, 'images')
   },
   filename(req, file, cb) {
-    cb(null, new Date().toISOString() + '-' + file.originalname)
+    cb(null, uuidv4() + file.originalname)
   }
 })
 
@@ -20,5 +21,6 @@ const fileFilter = (req, file, cb) => {
 }
 
 module.exports = multer({
-  storage, fileFilter
+  storage, fileFilter,
+  limits: {fieldSize: 5 * 1024 * 1024}
 })
