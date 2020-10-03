@@ -43,7 +43,7 @@ router.delete('/remove/:id', auth, async (req, res) => {
     const courses = mapCartItems(user.cart)
     
     const cart = {
-        courses, price: computePrice(courses)
+        courses, price: computePrice(courses), csrf: res.locals.csrf
     }
 
     res.status(200).json(cart)
@@ -65,7 +65,7 @@ router.get('/', auth, async (req, res) => {
         .execPopulate()
     
         const courses = mapCartItems(user.cart)
-        
+       
     res.render('card', {
         title: 'Корзина',
         isCard: true,

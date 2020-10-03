@@ -13,7 +13,7 @@ router.get('/', auth, async (req, res) => {
             isOrder: true,
             title: 'Заказы',
             orders: orders.map(o => {
-               
+            
                 return{
                     ...o._doc,
                     price: o.courses.reduce((total, c) => total + c.count * c.course.price, 0)
@@ -32,7 +32,7 @@ router.post('/', auth, async (req, res) => {
         const user = await req.user
             .populate('cart.items.courseId')
             .execPopulate()
-            
+           
         const courses = user.cart.items.map(i => ({
             count: i.count,
             course: {...i.courseId._doc}

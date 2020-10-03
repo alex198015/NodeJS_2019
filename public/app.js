@@ -42,19 +42,21 @@ if($card){
             }).then(res => res.json())
               .then(card => {
                   if(card.courses.length) {
+                    const token = card.csrf
+                    
                     const html = card.courses.map(c => {
                         return `
                                 <tr>
                                     <td>${c.title}</td>
                                     <td>${c.count}</td>
                                     <td>
-                                        <button class="btn btn-small js-remove" data-id="${c.id}">Удалить</button>
+                                        <button class="btn btn-small red js-remove" data-id="${c.id}" data-csrf="${token}">Удалить</button>
                                     </td>
                                 </tr>`
                     }).join('')
                     $card.querySelector('tbody').innerHTML = html
                     $card.querySelector('.price').textContent = toCurrency(card.price)
-
+                    
                   } else {
                       $card.innerHTML = '<p>Корзина пуста</p>'
                   }

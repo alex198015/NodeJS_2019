@@ -45,7 +45,7 @@
 //             card.courses.splice(idx, 1)
 //         } else {
 //             // изменить количество
-//             course.count--
+//             card.courses[idx].count--
 //         }
 //         card.price -= course.price
 

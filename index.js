@@ -7,6 +7,7 @@
 const http = require('http')
 const fs = require('fs')
 const path = require('path')
+const url = require('url')
 
 const server = http.createServer((req, res) => {
     // console.log(req.url);
@@ -16,6 +17,7 @@ const server = http.createServer((req, res) => {
     // res.end(`<div style="background: blue; width: 200px; height: 200px">
     // <h1>Test</h1>
     // </div>`)
+    
     if(req.method === 'GET'){
         res.writeHead(200, {
             'Content-Type': 'text/html; charset=utf-8'

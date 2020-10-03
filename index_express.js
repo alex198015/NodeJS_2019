@@ -21,6 +21,7 @@ const userMiddleware = require('./middleware/user')
 const errorHandler = require('./middleware/error')
 const fileMiddleware = require('./middleware/file')
 const keys = require('./keys')
+// const { Result } = require('express-validator')
 
 
 const app = express()
@@ -141,3 +142,20 @@ start()
 //         isCourses: true
 //     })
 // })
+
+//================================================================== примеры
+// const arr = [1, 4, 3, 4, 3, 8, 8, 9]
+
+// const arr2 = arr.filter((item, i) => arr.indexOf(item) === i)
+// const arr2 = arr.filter((item, i) => arr.indexOf(item) !== i)
+
+// let arr4 = [...new Set(arr)]
+// let arr5 = Array.from(new Set(arr))
+
+// const arr3 = arr.reduce((total, item) => total.includes(item) ? total : [...total, item], [] )
+
+// let n1 = 5**3
+
+// console.log(~~n1);
+
+// console.log(arr5);
